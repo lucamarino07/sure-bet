@@ -99,7 +99,7 @@ export default {
   computed: mapGetters(["betsCount"]),
   data() {
     return {
-      e6: 1,
+      e6: 0,
       picker: new Date().toISOString().substr(0, 10),
       home_team: null,
       away_team: null,
