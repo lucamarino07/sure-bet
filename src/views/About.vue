@@ -1,5 +1,19 @@
 <template>
   <div class="about">
-    <h1>Le mie scommesse</h1>
+    
   </div>
 </template>
+
+<script>
+export default {
+  
+  computed: {
+    bets() {
+      return this.$store.state.bets;
+    }
+  }
+};
+</script>
+
+<style>
+</style>

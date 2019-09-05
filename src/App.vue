@@ -45,7 +45,7 @@
     </v-content>
 
     <v-footer app>
-      <span>Calcolatore Sure Bet &copy; Luca Marino 2019 {{drawer}}</span>
+      <span>Calcolatore Sure Bet &copy; Luca Marino 2019</span>
     </v-footer>
     
   </v-app>
