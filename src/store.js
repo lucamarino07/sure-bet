@@ -54,10 +54,6 @@ export default new Vuex.Store({
     calcolaGrandezze(state, payload) {
       let bet = findBetById(state, payload.id);
       if (bet) {
-        let inverso_quota = 1 / bet.quota
-        let inverso_quota_c1 = 1 / bet.copertura_1.quota
-        let inverso_quota_c2 = 1 / bet.copertura_2.quota
-        let resa_netta = 1 - ((inverso_quota + inverso_quota_c1 + inverso_quota_c2))
         bet.resa_netta = parseFloat(resa_netta.toFixed(4) * 100);
         let importo1 = (bet.quota * bet.importo) / (bet.copertura_1.quota)
         bet.copertura_1.importo = parseFloat(importo1.toFixed(2))
@@ -77,6 +73,14 @@ export default new Vuex.Store({
       }
     },
     aggiungiBet(state, payload) {
+      let inverso_quota = 1 / payload.quota
+      let inverso_quota_c1 = 1 / payload.copertura_1.quota
+      let inverso_quota_c2 = 1 / payload.copertura_2.quota
+      let resa_netta = 1 - ((inverso_quota + inverso_quota_c1 + inverso_quota_c2))
+      let importo1 = (payload.quota * payload.importo) / (payload.copertura_1.quota)
+      let importo2 = (payload.quota * payload.importo) / (payload.copertura_2.quota)
+      let investimento = parseFloat(payload.importo) + importo1 + importo2
+      let vincita_netta = (investimento * resa_netta).toFixed(2)
       let bet = {
         id: state.bets.length + 1,
         data: payload.data,
@@ -85,18 +89,21 @@ export default new Vuex.Store({
         pronostico_pre_gara: payload.pronostico_pre_gara,
         quota: payload.quota,
         importo: payload.importo,
-        vincita_netta: null,
-        resa_netta: null,
+        vincita_netta: vincita_netta,
+        resa_netta: resa_netta,
         copertura_1: {
           pronostico: payload.copertura_1.pronostico,
-          quota: payload.copertura_1.quota
+          quota: payload.copertura_1.quota,
+          importo1: importo1
         },
         copertura_2: {
           pronostico: payload.copertura_2.pronostico,
           quota: payload.copertura_2.quota,
+          importo2: importo2
         },
-        investimento: null
+        investimento: investimento
       }
+      console.log(bet)
       state.bets.push(bet);
     }
   },

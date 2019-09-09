@@ -1,7 +1,6 @@
 <template>
   <div>
     Ci sono {{betsCount}} scommessa
-    {{bets}}
     <v-card class="mx-auto">
       <v-card-title>
         <div>Inserisci una nuova scommessa</div>
@@ -117,7 +116,6 @@
     <div class="text-center ma-2">
       <v-snackbar v-model="snackbar" :timeout="timeout">
         {{ text }}
-        <v-btn color="pink" text @click="snackbar = false">Close</v-btn>
       </v-snackbar>
     </div>
   </div>
