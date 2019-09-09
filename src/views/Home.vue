@@ -24,7 +24,7 @@
 
             <v-stepper-content step="1">
               <v-row justify="center" class="mb-2">
-                <v-date-picker v-model="picker" locale="it-IT"></v-date-picker>
+                <v-date-picker v-model="picker" locale="it-IT" required></v-date-picker>
               </v-row>
               <v-row justify="center" class="mb-2">
                 <!-- <v-card color="grey lighten-1" class="mb-12" height="200px"></v-card> -->
@@ -41,16 +41,16 @@
               <v-form>
                 <v-row>
                   <v-col cols="6" sm="6" md="3">
-                    <v-text-field label="Casa" v-model="home_team"></v-text-field>
+                    <v-text-field label="Casa" v-model="home_team" required></v-text-field>
                   </v-col>
                   <v-col cols="6" sm="6" md="3">
-                    <v-text-field label="Trasferta" v-model="away_team"></v-text-field>
+                    <v-text-field label="Trasferta" v-model="away_team" required></v-text-field>
                   </v-col>
                   <v-col cols="6" sm="6" md="3">
-                    <v-text-field label="Pronostico" v-model="pronostico_pre_gara"></v-text-field>
+                    <v-text-field label="Pronostico" v-model="pronostico_pre_gara" required></v-text-field>
                   </v-col>
                   <v-col cols="6" sm="6" md="3">
-                    <v-text-field label="Quota" v-model="quota" type="number"></v-text-field>
+                    <v-text-field label="Quota" v-model="quota" type="number" required></v-text-field>
                   </v-col>
                 </v-row>
               </v-form>
@@ -69,23 +69,33 @@
               <v-form>
                 <v-row>
                   <v-col cols="6" sm="6" md="3">
-                    <v-text-field label="Pronostico copertura 1" v-model="copertura_1_pronostico"></v-text-field>
+                    <v-text-field
+                      label="Pronostico copertura 1"
+                      v-model="copertura_1_pronostico"
+                      required
+                    ></v-text-field>
                   </v-col>
                   <v-col cols="6" sm="6" md="3">
                     <v-text-field
                       label="Quota copertura 1"
                       v-model="copertura_1_quota"
                       type="number"
+                      required
                     ></v-text-field>
                   </v-col>
                   <v-col cols="6" sm="6" md="3">
-                    <v-text-field label="Pronostico copertura 2" v-model="copertura_2_pronostico"></v-text-field>
+                    <v-text-field
+                      label="Pronostico copertura 2"
+                      v-model="copertura_2_pronostico"
+                      required
+                    ></v-text-field>
                   </v-col>
                   <v-col cols="6" sm="6" md="3">
                     <v-text-field
                       label="Quota copertura 2"
                       v-model="copertura_2_quota"
                       type="number"
+                      required
                     ></v-text-field>
                   </v-col>
                 </v-row>
@@ -102,7 +112,7 @@
             </v-stepper-step>
             <v-stepper-content step="4">
               <v-col cols="6" sm="6" md="3">
-                <v-text-field label="Investimento" v-model="importo" type="number"></v-text-field>
+                <v-text-field label="Investimento" v-model="importo" type="number" required></v-text-field>
               </v-col>
               <v-row justify="center" class="mb-2">
                 <v-btn color="success" @click="aggiungiBet" class="mr-2">Salva</v-btn>
@@ -114,9 +124,7 @@
       </v-expand-transition>
     </v-card>
     <div class="text-center ma-2">
-      <v-snackbar v-model="snackbar" :timeout="timeout">
-        {{ text }}
-      </v-snackbar>
+      <v-snackbar v-model="snackbar" :timeout="timeout">{{ text }}</v-snackbar>
     </div>
   </div>
 </template>
